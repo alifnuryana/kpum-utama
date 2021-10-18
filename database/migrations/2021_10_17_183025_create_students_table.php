@@ -18,6 +18,7 @@ class CreateStudentsTable extends Migration
             $table->string('npm')->unique();
             $table->string('name');
             $table->string('email');
+            $table->string('ukm');
             $table->string('password');
             $table->boolean('is_admin')->default(0);
             $table->foreignId('major_id');

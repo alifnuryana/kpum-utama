@@ -18,13 +18,14 @@ class LoginController extends Controller
     public function store(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required|email|ends_with:@widyatama.ac.id',
+            'email' => 'required|email|ends_with
+            :@widyatama.ac.id',
             'password' => ['required', 'min:7'],
         ]);
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('dashboard');
+            return redirect()->intended(route('dashboard.mpm'));
         }
 
         return back()

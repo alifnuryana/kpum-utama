@@ -54,7 +54,7 @@
                                 {{ auth()->user()->name }}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a></li>
+                                <li><a class="dropdown-item" href="{{ route('dashboard.mpm') }}">Dashboard</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -73,7 +73,7 @@
                     @guest
                         <li class="nav-item">
                             <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
-                            <a href="" class="btn btn-secondary">Register</a>
+                            <a href="{{ route('register') }}" class="btn btn-secondary">Register</a>
                         </li>
                     @endguest
                 </ul>

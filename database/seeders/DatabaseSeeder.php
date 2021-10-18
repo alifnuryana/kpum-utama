@@ -158,7 +158,8 @@ class DatabaseSeeder extends Seeder
         Student::create([
             'name' => 'Alif Nuryana',
             'npm' => '0620101052',
-            'email' => 'alifnuryana0@gmail.com',
+            'email' => 'nuryana.alif@widyatama.ac.id',
+            'ukm' => 'Unbol',
             'password' => Hash::make('Bricard2708_'),
             'is_admin' => true,
             'major_id' => 1,
@@ -167,8 +168,9 @@ class DatabaseSeeder extends Seeder
         Student::create([
             'name' => 'admin',
             'npm' => '0620101050',
-            'email' => 'admin@gmail.com',
-            'password' => Hash::make('admin'),
+            'ukm' => 'Unbol',
+            'email' => 'admin@widyatama.ac.id',
+            'password' => Hash::make('adminkpum2021'),
             'is_admin' => false,
             'major_id' => 1,
         ]);

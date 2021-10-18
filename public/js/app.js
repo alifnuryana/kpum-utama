@@ -3160,6 +3160,15 @@ __webpack_require__.r(__webpack_exports__);
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 
 
+(function () {
+  'use strict';
+
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+    new bootstrap.Tooltip(tooltipTriggerEl);
+  });
+})();
+
 /***/ }),
 
 /***/ "./node_modules/bootstrap/dist/js/bootstrap.esm.js":

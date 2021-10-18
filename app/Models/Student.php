@@ -18,6 +18,11 @@ class Student extends Model implements Authenticatable
         return $this->belongsTo(Major::class);
     }
 
+    public function votes()
+    {
+        return $this->hasMany(Vote::class);
+    }
+
     protected $guarded = [];
 
 }
