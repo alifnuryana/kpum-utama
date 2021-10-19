@@ -25,10 +25,14 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
+                        <a class="nav-link @if ($active == 'home')
+                            active
+                        @endif" aria-current="page" href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link dropdown-toggle @if ($active == 'mpm' || $active == 'presma' || $active == 'senat' || $active == 'ukm')
+                            active
+                        @endif" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Kandidat
                         </a>
@@ -40,7 +44,9 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home.panitia') }}">Panitia</a>
+                        <a class="nav-link @if ($active == 'panitia')
+                            active
+                        @endif" href="{{ route('home.panitia') }}">Panitia</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link disabled" href="#">Hasil Sementara</a>

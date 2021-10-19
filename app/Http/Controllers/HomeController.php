@@ -60,7 +60,7 @@ class HomeController extends Controller
     public function ukm()
     {
         $candidates = collect(Candidate::with('team', 'major')->whereHas('team', function ($q) {
-            $q->where('name', 'like', '%ukm%');
+            $q->where('name', 'not like', '%mpm%')->where('name', 'not like', '%presma%')->where('name', 'not like', '%senat%');
         })->orderBy('team_id', 'ASC')->get());
         $grouped = $candidates->mapToGroups(function ($item, $key) {
             return [$item['team']['name'] => $item];

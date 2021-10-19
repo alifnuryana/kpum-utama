@@ -23,7 +23,7 @@ class TeamFactory extends Factory
     {
         return [
             'name' => "Paslon".$this->faker->name(),
-            'organization_id' => rand(1, 6),
+            'organization_id' => rand(1, 16),
         ];
     }
 }

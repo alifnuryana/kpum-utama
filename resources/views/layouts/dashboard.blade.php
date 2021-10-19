@@ -41,7 +41,7 @@
                                 href="{{ route('dashboard.senat') }}">Senat</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">UKM</a>
+                            @yield('ukm')
                         </li>
                     </ul>
                     <ul class="navbar-nav ms-auto">

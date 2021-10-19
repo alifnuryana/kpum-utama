@@ -37,4 +37,14 @@ class VoteController extends Controller
         Team::find(request()->vote)->increment('votes');
         return redirect(route('dashboard.senat'));
     }
+
+    public function ukm($ukmName)
+    {
+        Vote::create([
+            'student_id' => auth()->user()->id,
+            'team_id' => request()->vote,
+        ]);
+        Team::find(request()->vote)->increment('votes');
+        return redirect(route('dashboard.ukm', $ukmName));
+    }
 }
