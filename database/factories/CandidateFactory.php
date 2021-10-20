@@ -26,6 +26,8 @@ class CandidateFactory extends Factory
             'npm' => $this->faker->randomNumber(5, true),
             'name' => $this->faker->name(),
             'position' => $this->faker->jobTitle(),
+            'path' => '',
+            'cv' => '',
             'major_id' => rand(1,6),
             'team_id' => rand(1, 10),
         ];

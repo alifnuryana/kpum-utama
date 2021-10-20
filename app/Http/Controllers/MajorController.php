@@ -89,7 +89,6 @@ class MajorController extends Controller
     {
         request()->validate([
             'name' => ['required', 'min:7'],
-            // 'slug' => '',
             'faculty_id' => ['required'],
         ]);
 

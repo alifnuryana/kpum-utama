@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Timeline;
 use App\Models\Candidate;
+use App\Models\Committee;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -65,8 +66,8 @@ class HomeController extends Controller
         $grouped = $candidates->mapToGroups(function ($item, $key) {
             return [$item['team']['name'] => $item];
         });
-        
-    
+
+
         return view('home', [
             'active' => 'ukm',
             'grouped' => $grouped,
@@ -77,7 +78,7 @@ class HomeController extends Controller
     {
         return view('home', [
             'active' => 'panitia',
-            'committees' => collect(Candidate::all()),
+            'committees' => collect(Committee::with(['major'])->get()),
         ]);
     }
 

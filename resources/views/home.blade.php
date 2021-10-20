@@ -77,7 +77,7 @@
                 @foreach ($candidates as $candidate)
                     <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="card mb-3 shadow">
-                            <img src="https://source.unsplash.com/400x500" width="400" height="500"
+                            <img src="{{ asset('storage/'.$candidate->path) }}" width="400" height="500"
                                 class="card-img-top img-fluid" alt="kandidat_mpm">
                             <div class="card-body text-center">
                                 <h5 class="card-title">{{ $candidate->name }}</h5>
@@ -104,7 +104,7 @@
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <img src="https://source.unsplash.com/400x500" width="400" height="500"
+                                    <img src="{{ asset('storage/'.$candidate->path) }}" width="400" height="500"
                                         class="card-img-top img-fluid" alt="kandidat_mpm">
                                     <ul class="list-group mt-2">
                                         <li class="list-group-item">
@@ -122,7 +122,7 @@
                                     </ul>
                                 </div>
                                 <div class="modal-footer d-flex justify-content-between">
-                                    <a href="#" class="btn btn-danger">Download CV</a>
+                                    <a href="{{ asset('storage/'.$candidate->cv) }}" target="_blank" class="btn btn-danger">Download CV</a>
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 </div>
                             </div>
@@ -151,7 +151,7 @@
                                 @foreach ($candidates as $candidate)
                                     <div class="col-md-6 col-lg-4 col-xl-3 col-12">
                                         <div class="card mb-3">
-                                            <img src="https://source.unsplash.com/400x500" width="400" height="500"
+                                            <img src="{{ asset('storage/'.$candidate->path) }}" width="400" height="500"
                                                 class="card-img-top img-fluid" alt="kandidat_Presma">
                                             <div class="card-body text-center">
                                                 <h5 class="card-title">{{ $candidate->name }}</h5>
@@ -179,7 +179,7 @@
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <img src="https://source.unsplash.com/400x500" width="400" height="500"
+                                                    <img src="{{ asset('storage/'.$candidate->path) }}" width="400" height="500"
                                                         class="card-img-top img-fluid" alt="kandidat_Presma">
                                                     <ul class="list-group mt-2">
                                                         <li class="list-group-item">
@@ -198,7 +198,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="modal-footer d-flex justify-content-between">
-                                                    <a href="#" class="btn btn-danger">Download CV</a>
+                                                    <a href="{{ asset('storage/'.$candidate->cv) }}" target="_blank" class="btn btn-danger">Download CV</a>
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">Close</button>
                                                 </div>
@@ -232,7 +232,7 @@
                                 @foreach ($candidates as $candidate)
                                     <div class="col-md-6 col-lg-4 col-xl-3 col-12">
                                         <div class="card mb-3">
-                                            <img src="https://source.unsplash.com/400x500" width="400" height="500"
+                                            <img src="{{ asset('storage/'.$candidate->path) }}" width="400" height="500"
                                                 class="card-img-top img-fluid" alt="kandidat_Senat">
                                             <div class="card-body text-center">
                                                 <h5 class="card-title">{{ $candidate->name }}</h5>
@@ -260,7 +260,7 @@
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <img src="https://source.unsplash.com/400x500" width="400" height="500"
+                                                    <img src="{{ asset('storage/'.$candidate->path) }}" width="400" height="500"
                                                         class="card-img-top img-fluid" alt="kandidat_Senat">
                                                     <ul class="list-group mt-2">
                                                         <li class="list-group-item">
@@ -279,7 +279,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="modal-footer d-flex justify-content-between">
-                                                    <a href="#" class="btn btn-danger">Download CV</a>
+                                                    <a href="{{ asset('storage/'.$candidate->cv) }}" target="_blank" class="btn btn-danger">Download CV</a>
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">Close</button>
                                                 </div>
@@ -313,7 +313,7 @@
                                 @foreach ($candidates as $candidate)
                                     <div class="col-md-6 col-lg-4 col-xl-3 col-12">
                                         <div class="card mb-3">
-                                            <img src="https://source.unsplash.com/400x500" width="400" height="500"
+                                            <img src="{{ asset('storage/'.$candidate->path) }}" width="400" height="500"
                                                 class="card-img-top img-fluid" alt="kandidat_UKM">
                                             <div class="card-body text-center">
                                                 <h5 class="card-title">{{ $candidate->name }}</h5>
@@ -341,7 +341,7 @@
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <img src="https://source.unsplash.com/400x500" width="400" height="500"
+                                                    <img src="{{ asset('storage/'.$candidate->path) }}" width="400" height="500"
                                                         class="card-img-top img-fluid" alt="kandidat_UKM">
                                                     <ul class="list-group mt-2">
                                                         <li class="list-group-item">
@@ -360,7 +360,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="modal-footer d-flex justify-content-between">
-                                                    <a href="#" class="btn btn-danger">Download CV</a>
+                                                    <a href="{{ asset('storage/'.$candidate->cv) }}" target="_blank" class="btn btn-danger">Download CV</a>
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">Close</button>
                                                 </div>
@@ -387,7 +387,7 @@
                 @foreach ($committees as $committee)
                     <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="card mb-3 shadow">
-                            <img src="https://source.unsplash.com/400x500" width="400" height="500"
+                            <img src="{{ asset('storage/'.$committee->path) }}" width="400" height="500"
                                 class="card-img-top img-fluid" alt="kandidat_UKM">
                             <div class="card-body text-center">
                                 <h5 class="card-title">{{ $committee->name }}</h5>

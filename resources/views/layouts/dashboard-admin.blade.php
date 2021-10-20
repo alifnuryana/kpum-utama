@@ -49,13 +49,16 @@
                                 href="{{ route('team.index') }}">Pasangan Calon</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        <a class="nav-link dropdown-toggle @if ($active == 'mpm' || $active == 'presma' || $active == 'senat' || $active == 'ukm' )
+                                active
+                            @endif" href="#" id="navbarDropdownMenuLink" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Kandidat
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">MPM</a></li>
+                                <li><a class="dropdown-item" href="{{ route('mpm.index') }}">MPM</a></li>
                                 <li><a class="dropdown-item" href="#">Presma</a></li>
+                                <li><a class="dropdown-item" href="#">Senat</a></li>
                                 <li><a class="dropdown-item" href="#">UKM</a></li>
                             </ul>
                         </li>

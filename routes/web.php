@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MajorController;
+use App\Http\Controllers\MpmController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TeamController;
@@ -59,12 +61,12 @@ Route::get('dashboard/admin', function () {
   ]);
 })->name('dashboard.admin')->middleware('admin');
 
-// Crud Major
-Route::get('dashboard/admin/major', [MajorController::class, 'index'])->name('major.index')->middleware('admin');
+// Crud Dashboard Admin
 Route::resource('dashboard/admin/major', MajorController::class)->middleware('admin');
 Route::resource('dashboard/admin/faculty', FacultyController::class)->middleware('admin');
 Route::resource('dashboard/admin/organization', OrganizationController::class)->middleware('admin');
 Route::resource('dashboard/admin/team', TeamController::class)->middleware('admin');
 Route::resource('dashboard/admin/timeline', TimelineController::class)->middleware('admin');
+Route::resource('dashboard/admin/mpm', MpmController::class)->middleware('admin');
 
 

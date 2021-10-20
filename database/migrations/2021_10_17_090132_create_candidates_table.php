@@ -18,6 +18,8 @@ class CreateCandidatesTable extends Migration
             $table->string('npm')->unique();
             $table->string('name');
             $table->string('position');
+            $table->string('path');
+            $table->string('cv');
             $table->foreignId('major_id');
             $table->foreignId('team_id');
             $table->timestamps();

@@ -18,6 +18,8 @@ class CreateCommitteesTable extends Migration
             $table->string('name');
             $table->string('npm');
             $table->string('position');
+            $table->string('path');
+            $table->foreignId('major_id');
             $table->timestamps();
         });
     }
