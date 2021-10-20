@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <script src="{{ asset('js/app.js') }}"></script>
     <title>@yield('title') | KPUM</title>
@@ -27,13 +28,14 @@
                     <li class="nav-item">
                         <a class="nav-link @if ($active == 'home')
                             active
-                        @endif" aria-current="page" href="{{ route('home') }}">Home</a>
+                        @endif"
+                            aria-current="page" href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle @if ($active == 'mpm' || $active == 'presma' || $active == 'senat' || $active == 'ukm')
                             active
-                        @endif" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        @endif"
+                            href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Kandidat
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -46,7 +48,8 @@
                     <li class="nav-item">
                         <a class="nav-link @if ($active == 'panitia')
                             active
-                        @endif" href="{{ route('home.panitia') }}">Panitia</a>
+                        @endif"
+                            href="{{ route('home.panitia') }}">Panitia</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link disabled" href="#">Hasil Sementara</a>
@@ -60,7 +63,11 @@
                                 {{ auth()->user()->name }}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="{{ route('dashboard.mpm') }}">Dashboard</a></li>
+                                @if (auth()->user()->is_admin)
+                                    <li><a class="dropdown-item" href="{{ route('dashboard.admin') }}">Dashboard</a></li>
+                                @else
+                                    <li><a class="dropdown-item" href="{{ route('dashboard.mpm') }}">Dashboard</a></li>
+                                @endif
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>

@@ -44,3 +44,10 @@ Route::post('dashboard/mpm', [VoteController::class, 'mpm'])->name('vote.mpm')->
 Route::post('dashboard/presma', [VoteController::class, 'presma'])->name('vote.presma')->middleware('auth');
 Route::post('dashboard/senat', [VoteController::class, 'senat'])->name('vote.senat')->middleware('auth');
 Route::post('dashboard/ukm/{ukmName}', [VoteController::class, 'ukm'])->name('vote.ukm')->middleware('auth');
+
+// Administrator
+Route::get('dashboard/admin', function () {
+  return view('dashboard.admin.home', [
+    'active' => 'home',
+  ]);
+})->name('dashboard.admin')->middleware('admin');
