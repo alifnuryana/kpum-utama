@@ -15,7 +15,7 @@
     <div class="wrapper w-full">
         <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
             <div class="container">
-                <a class="navbar-brand" href="#">KPUM UTAMA</a>
+                <a class="navbar-brand" href="{{ route('home') }}">KPUM UTAMA</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -24,27 +24,29 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link @if ($active == 'presma')
+                            <a class="nav-link @if ($active == 'home')
                                 active
                             @endif"
-                                href="{{ route('dashboard.presma') }}">Home</a>
+                                href="{{ route('dashboard.admin') }}">Home</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            <a class="nav-link dropdown-toggle @if ($active == 'timeline' || $active == 'hero' || $active == 'pengaturan')
+                                active
+                            @endif" href="#" id="navbarDropdownMenuLink" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Sistem Pemilu
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li><a class="dropdown-item" href="#">Hero</a></li>
-                                <li><a class="dropdown-item" href="#">Timeline</a></li>
+                                <li><a class="dropdown-item" href="{{ route('timeline.index') }}">Timeline</a></li>
                                 <li><a class="dropdown-item" href="#">Pengaturan</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @if ($active == 'presma')
+                            <a class="nav-link @if ($active == 'paslon')
                                 active
                             @endif"
-                                href="{{ route('dashboard.presma') }}">Pasangan Calon</a>
+                                href="{{ route('team.index') }}">Pasangan Calon</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
@@ -58,19 +60,19 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @if ($active == 'presma')
+                            <a class="nav-link @if ($active == 'ukm')
                                 active
                             @endif"
-                                href="{{ route('dashboard.presma') }}">UKM</a>
+                                href="{{ route('organization.index') }}">UKM</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @if ($active == 'presma')
+                            <a class="nav-link @if ($active == 'fakultas')
                                 active
                             @endif"
-                                href="{{ route('dashboard.presma') }}">Fakultas</a>
+                                href="{{ route('faculty.index') }}">Fakultas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @if ($active == 'senat')
+                            <a class="nav-link @if ($active == 'programstudi')
                                 active
                             @endif"
                                 href="{{ route('major.index') }}">Program Studi</a>

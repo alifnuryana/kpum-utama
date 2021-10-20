@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Faculty;
+use App\Models\Timeline;
 use Illuminate\Http\Request;
 
-class FacultyController extends Controller
+class TimelineController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        return view('dashboard.admin.faculty.index', [
-            'active' => 'fakultas',
-            'faculties' => Faculty::get(),
+        return view('dashboard.admin.timeline.index', [
+            'active' => 'timeline',
+            'timelines' => Timeline::get(),
         ]);
     }
 
@@ -27,8 +27,8 @@ class FacultyController extends Controller
      */
     public function create()
     {
-        return view('dashboard.admin.faculty.create', [
-            'active' => 'fakultas',
+        return view('dashboard.admin.timeline.create', [
+            'active' => 'timeline',
         ]);
     }
 
@@ -42,11 +42,12 @@ class FacultyController extends Controller
     {
         $attributes = request()->validate([
             'name' => 'required|min:7',
-            'slug' => '',
+            'desc' => 'required|min:10',
+            'from' => 'required',
+            'to' => 'required',
         ]);
-        $attributes['slug'] = strtolower(str_replace(' ', '-', request()->name));
-        Faculty::create($attributes);
-        return redirect(route('faculty.index'))->with('success', 'Fakultas baru telah ditambahkan.');
+        Timeline::create($attributes);
+        return redirect(route('timeline.index'))->with('success', 'Timeline baru telah ditambahkan.');
     }
 
     /**
@@ -57,7 +58,7 @@ class FacultyController extends Controller
      */
     public function show($id)
     {
-
+        //
     }
 
     /**
@@ -68,9 +69,9 @@ class FacultyController extends Controller
      */
     public function edit($id)
     {
-        return view('dashboard.admin.faculty.edit', [
-            'active' => 'program-studi',
-            'faculty' => Faculty::findOrFail($id),
+        return view('dashboard.admin.timeline.edit', [
+            'active' => 'timeline',
+            'timeline' => Timeline::findOrFail($id),
         ]);
     }
 
@@ -84,11 +85,14 @@ class FacultyController extends Controller
     public function update(Request $request, $id)
     {
         request()->validate([
-            'name' => ['required', 'min:7'],
+            'name' => 'required|min:7',
+            'desc' => 'required|min:10',
+            'from' => 'required',
+            'to' => 'required',
         ]);
 
-        Faculty::find($id)->update(request()->all());
-        return redirect(route('faculty.index'))->with('success', 'Data Berhasil Di Edit');
+        Timeline::find($id)->update(request()->all());
+        return redirect(route('timeline.index'))->with('success', 'Data Berhasil Di Edit');
     }
 
     /**
@@ -99,7 +103,7 @@ class FacultyController extends Controller
      */
     public function destroy($id)
     {
-        Faculty::find($id)->delete();
-        return redirect(route('faculty.index'))->with('success', 'Data Berhasil Di Hapus');
+        Timeline::find($id)->delete();
+        return redirect(route('timeline.index'))->with('success', 'Data Berhasil Di Hapus');
     }
 }

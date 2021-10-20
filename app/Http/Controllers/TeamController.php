@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Faculty;
+use App\Models\Team;
+use App\Models\Organization;
 use Illuminate\Http\Request;
 
-class FacultyController extends Controller
+class TeamController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +15,9 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        return view('dashboard.admin.faculty.index', [
-            'active' => 'fakultas',
-            'faculties' => Faculty::get(),
+        return view('dashboard.admin.team.index', [
+            'active' => 'paslon',
+            'teams' => Team::with(['organization'])->get(),
         ]);
     }
 
@@ -27,8 +28,9 @@ class FacultyController extends Controller
      */
     public function create()
     {
-        return view('dashboard.admin.faculty.create', [
-            'active' => 'fakultas',
+        return view('dashboard.admin.team.create', [
+            'active' => 'paslon',
+            'organizations' => Organization::get(),
         ]);
     }
 
@@ -42,11 +44,11 @@ class FacultyController extends Controller
     {
         $attributes = request()->validate([
             'name' => 'required|min:7',
-            'slug' => '',
+            'organization_id' => 'required',
         ]);
-        $attributes['slug'] = strtolower(str_replace(' ', '-', request()->name));
-        Faculty::create($attributes);
-        return redirect(route('faculty.index'))->with('success', 'Fakultas baru telah ditambahkan.');
+        // $attributes['slug'] = strtolower(str_replace(' ', '-', request()->name));
+        Team::create($attributes);
+        return redirect(route('team.index'))->with('success', 'Pasangan Calon baru telah ditambahkan.');
     }
 
     /**
@@ -57,7 +59,7 @@ class FacultyController extends Controller
      */
     public function show($id)
     {
-
+        //
     }
 
     /**
@@ -68,9 +70,10 @@ class FacultyController extends Controller
      */
     public function edit($id)
     {
-        return view('dashboard.admin.faculty.edit', [
+        return view('dashboard.admin.team.edit', [
             'active' => 'program-studi',
-            'faculty' => Faculty::findOrFail($id),
+            'organizations' => Organization::all(),
+            'team' => Team::findOrFail($id),
         ]);
     }
 
@@ -85,10 +88,11 @@ class FacultyController extends Controller
     {
         request()->validate([
             'name' => ['required', 'min:7'],
+            'organization_id' => ['required'],
         ]);
 
-        Faculty::find($id)->update(request()->all());
-        return redirect(route('faculty.index'))->with('success', 'Data Berhasil Di Edit');
+        Team::find($id)->update(request()->all());
+        return redirect(route('team.index'))->with('success', 'Data Berhasil Di Edit');
     }
 
     /**
@@ -99,7 +103,7 @@ class FacultyController extends Controller
      */
     public function destroy($id)
     {
-        Faculty::find($id)->delete();
-        return redirect(route('faculty.index'))->with('success', 'Data Berhasil Di Hapus');
+        Team::find($id)->delete();
+        return redirect(route('team.index'))->with('success', 'Data Berhasil Di Hapus');
     }
 }

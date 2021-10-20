@@ -5,7 +5,10 @@ use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MajorController;
+use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\TeamController;
+use App\Http\Controllers\TimelineController;
 use App\Http\Controllers\VoteController;
 use App\Models\Faculty;
 use App\Models\Major;
@@ -60,4 +63,8 @@ Route::get('dashboard/admin', function () {
 Route::get('dashboard/admin/major', [MajorController::class, 'index'])->name('major.index')->middleware('admin');
 Route::resource('dashboard/admin/major', MajorController::class)->middleware('admin');
 Route::resource('dashboard/admin/faculty', FacultyController::class)->middleware('admin');
+Route::resource('dashboard/admin/organization', OrganizationController::class)->middleware('admin');
+Route::resource('dashboard/admin/team', TeamController::class)->middleware('admin');
+Route::resource('dashboard/admin/timeline', TimelineController::class)->middleware('admin');
+
 
