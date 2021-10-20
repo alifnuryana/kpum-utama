@@ -1,10 +1,14 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MajorController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\VoteController;
+use App\Models\Faculty;
+use App\Models\Major;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,3 +55,9 @@ Route::get('dashboard/admin', function () {
     'active' => 'home',
   ]);
 })->name('dashboard.admin')->middleware('admin');
+
+// Crud Major
+Route::get('dashboard/admin/major', [MajorController::class, 'index'])->name('major.index')->middleware('admin');
+Route::resource('dashboard/admin/major', MajorController::class)->middleware('admin');
+Route::resource('dashboard/admin/faculty', FacultyController::class)->middleware('admin');
+
