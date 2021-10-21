@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MajorController;
 use App\Http\Controllers\MpmController;
 use App\Http\Controllers\OrganizationController;
+use App\Http\Controllers\PresmaController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TimelineController;
@@ -68,5 +69,6 @@ Route::resource('dashboard/admin/organization', OrganizationController::class)->
 Route::resource('dashboard/admin/team', TeamController::class)->middleware('admin');
 Route::resource('dashboard/admin/timeline', TimelineController::class)->middleware('admin');
 Route::resource('dashboard/admin/mpm', MpmController::class)->middleware('admin');
+Route::resource('dashboard/admin/presma', PresmaController::class)->middleware('admin');
 
 

@@ -1,8 +1,8 @@
 @extends('layouts.dashboard-admin')
-@section('title', 'Kandidat MPM')
+@section('title', 'Edit Kandidat Presma')
 @section('container')
     <div class="container pt-md-3 mt-5 pt-5">
-        <h3 class="display-6 fw-bold lh-1">Tambahkan Kandidat MPM</h3>
+        <h3 class="display-6 fw-bold lh-1">Edit Kandidat</h3>
         <hr>
         @if (session('success'))
             <div class="alert alert-success alert-dismissible fade show mt-5" role="alert">
@@ -12,11 +12,13 @@
         @endif
     </div>
     <div class="container mb-5">
-        <form action="{{ route('mpm.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('presma.update', $presma->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
+            <input type="text" hidden name="id" value="{{ $presma->id }}">
             <div class="mb-3">
                 <label for="name" class="form-label">Nama Kandidat</label>
-                <input type="text" value="{{ old('name') }}"
+                <input type="text" value="{{ old('name') ? old('name') : $presma->name }}"
                     class="form-control @error('name')
                     is-invalid
                 @enderror" name="name"
@@ -27,7 +29,7 @@
             </div>
             <div class="mb-3">
                 <label for="npm" class="form-label">NPM</label>
-                <input type="number" value="{{ old('npm') }}"
+                <input type="number" value="{{ old('npm') ? old('npm') : $presma->npm }}"
                     class="form-control @error('npm')
                     is-invalid
                 @enderror" name="npm"
@@ -39,9 +41,12 @@
             <div class="mb-3">
                 <label for="position" class="form-label">Posisi</label>
                 <select class="form-select" name="position">
-                    <option selected></option>
-                    <option {{ old('position') == 'Ketua' ? 'selected' : '' }} value="Ketua">Ketua</option>
-                    <option {{ old('position') == 'Wakil' ? 'selected' : '' }} value="Wakil">Wakil</option>
+                    <option @if ($presma->poisiton == 'Ketua')
+                        selected
+                        @endif value="Ketua">Ketua</option>
+                    <option @if ($presma->position == 'Wakil')
+                        selected
+                        @endif value="Wakil">Wakil</option>
                 </select>
                 @error('position')
                     <p class="text-danger">{{ $message }}</p>
@@ -52,7 +57,9 @@
                 <select class="form-select" name="major_id">
                     <option selected></option>
                     @foreach ($majors as $major)
-                        <option {{ old('major_id') == $major->id ? 'selected' : '' }} value="{{ $major->id }}">
+                        <option @if (old('major_id') == $major->id || $presma->major_id == $major->id)
+                            selected
+                            @endif value="{{ $major->id }}">
                             {{ $major->name }}</option>
                     @endforeach
                 </select>
@@ -65,7 +72,9 @@
                 <select class="form-select" name="team_id">
                     <option selected></option>
                     @foreach ($teams as $team)
-                        <option {{ old('team_id') == $team->id ? 'selected' : '' }} value="{{ $team->id }}">
+                        <option @if (old('team_id') == $team->id || $presma->team_id == $team->id)
+                            selected
+                            @endif value="{{ $team->id }}">
                             {{ $team->name }}</option>
                     @endforeach
                 </select>
@@ -75,19 +84,21 @@
             </div>
             <div class="mb-3">
                 <label for="path" class="form-label">Foto Kandidat</label>
-                <input type="file" value="{{ old('path') }}"
-                    class="form-control @error('path')
+                <input type="file"
+                value="{{ $presma->path }}"
+                class="form-control @error('path')
                     is-invalid
                 @enderror" name="path"
-                    id="path">
+                id="path">
                 @error('path')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>
             <div class="mb-3">
                 <label for="cv" class="form-label">CV Kandidat</label>
-                <input type="file" placeholder="Choose image" value="{{ old('cv') }}"
-                    class="form-control @error('cv')
+                <input type="file"
+                value="{{ $presma->cv }}"
+                class="form-control @error('cv')
                     is-invalid
                 @enderror" name="cv"
                     id="cv">
@@ -96,7 +107,7 @@
                 @enderror
             </div>
             <div class="mb-3 d-flex justify-content-end">
-                <button type="submit" class="btn btn-primary">Tambahkan</button>
+                <button type="submit" class="btn btn-primary">Edit</button>
             </div>
         </form>
     </div>

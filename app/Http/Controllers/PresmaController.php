@@ -7,7 +7,7 @@ use App\Models\Major;
 use App\Models\Candidate;
 use Illuminate\Http\Request;
 
-class MpmController extends Controller
+class PresmaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,12 +16,11 @@ class MpmController extends Controller
      */
     public function index()
     {
-        return view('dashboard.admin.mpm.index', [
-            'active' => 'mpm',
-            'mpms' => Candidate::with(['team', 'major'])->whereHas('team', function ($q) {
-                $q->where('name', 'like', '%mpm%');
+        return view('dashboard.admin.presma.index', [
+            'active' => 'presmas',
+            'presmas' => Candidate::with(['team', 'major'])->whereHas('team', function ($q) {
+                $q->where('name', 'like', '%presma%');
             })->get(),
-
         ]);
     }
 
@@ -32,8 +31,8 @@ class MpmController extends Controller
      */
     public function create()
     {
-        return view('dashboard.admin.mpm.create', [
-            'active' => 'mpm',
+        return view('dashboard.admin.presma.create', [
+            'active' => 'presma',
             'majors' => Major::get(),
             'teams' => Team::get(),
         ]);
@@ -59,7 +58,7 @@ class MpmController extends Controller
         $attributes['path'] = $request->file('path')->store('candidate-pic');
         $attributes['cv'] = $request->file('cv')->store('candidate-cv');
         Candidate::create($attributes);
-        return redirect(route('mpm.index'))->with('success', 'Kandidat MPM baru telah ditambahkan.');
+        return redirect(route('presma.index'))->with('success', 'Kandidat Presma baru telah ditambahkan.');
     }
 
     /**
@@ -81,11 +80,11 @@ class MpmController extends Controller
      */
     public function edit($id)
     {
-        return view('dashboard.admin.mpm.edit', [
-            'active' => 'mpm',
+        return view('dashboard.admin.presma.edit', [
+            'active' => 'presma',
             'teams' => Team::all(),
             'majors' => Major::all(),
-            'mpm' => Candidate::with('team', 'major')->findOrFail($id),
+            'presma' => Candidate::with('team', 'major')->findOrFail($id),
         ]);
     }
 
@@ -110,7 +109,7 @@ class MpmController extends Controller
         $attributes['path'] = $request->file('path')->store('candidate-pic');
         $attributes['cv'] = $request->file('cv')->store('candidate-cv');
         Candidate::find($id)->update($attributes);
-        return redirect(route('mpm.index'))->with('success', 'Data Berhasil Di Edit');
+        return redirect(route('presma.index'))->with('success', 'Data Berhasil Di Edit');
     }
 
     /**
@@ -122,6 +121,6 @@ class MpmController extends Controller
     public function destroy($id)
     {
         Candidate::find($id)->delete();
-        return redirect(route('mpm.index'))->with('success', 'Data Berhasil Di Hapus');
+        return redirect(route('presma.index'))->with('success', 'Data Berhasil Di Hapus');
     }
 }

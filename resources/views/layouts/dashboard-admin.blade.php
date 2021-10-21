@@ -57,7 +57,7 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li><a class="dropdown-item" href="{{ route('mpm.index') }}">MPM</a></li>
-                                <li><a class="dropdown-item" href="#">Presma</a></li>
+                                <li><a class="dropdown-item" href="{{ route('presma.index') }}">Presma</a></li>
                                 <li><a class="dropdown-item" href="#">Senat</a></li>
                                 <li><a class="dropdown-item" href="#">UKM</a></li>
                             </ul>

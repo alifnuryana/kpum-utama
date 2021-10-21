@@ -1,8 +1,8 @@
 @extends('layouts.dashboard-admin')
-@section('title', 'Kandidat MPM')
+@section('title', 'Kandidat Presma')
 @section('container')
     <div class="container pt-md-3 mt-5 pt-5">
-        <h3 class="display-6 fw-bold lh-1">Tambahkan Kandidat MPM</h3>
+        <h3 class="display-6 fw-bold lh-1">Tambahkan Kandidat Presma</h3>
         <hr>
         @if (session('success'))
             <div class="alert alert-success alert-dismissible fade show mt-5" role="alert">
@@ -12,7 +12,7 @@
         @endif
     </div>
     <div class="container mb-5">
-        <form action="{{ route('mpm.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('presma.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">Nama Kandidat</label>
