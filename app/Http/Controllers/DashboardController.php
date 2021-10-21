@@ -122,8 +122,9 @@ class DashboardController extends Controller
                 break;
             }
         }
-        $organizationID = Organization::where('slug', '=', $ukmName)->get()->first();
-        $organizationID = $organizationID->id;
+        $organization = Organization::where('slug', '=', $ukmName)->get()->first();
+        $organizationID = $organization->id;
+        $organizationName = $organization->name;
         $candidates = Candidate::with('team', 'major')->whereHas('team', function ($q) use ($organizationID) {
             $q->where('organization_id', '=', $organizationID);
         })->orderBy('team_id', 'ASC')->get();
@@ -132,6 +133,7 @@ class DashboardController extends Controller
         });
         return view('dashboard.home', [
             'active' => $ukmName,
+            'name' => $organizationName,
             'dataVoteUKM' => $dataVoteUKM,
             'isVoteUKM' => $isVoteUKM,
             'grouped' => $grouped,
