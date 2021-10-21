@@ -10,8 +10,13 @@
                     world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid
                     system, extensive prebuilt components, and powerful JavaScript plugins.</p>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-                    <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Primary</button>
-                    <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
+                    @if (auth()->user())
+                        <a href="{{ route('dashboard.mpm') }}" class="btn btn-primary btn-lg px-4 me-md-2">Gunakan hak suara anda segera!</a>
+                    @else
+                        <a href="{{ route('register') }}" class="btn btn-primary btn-lg px-4 me-md-2">Daftarkan segera hak
+                            suara anda!</a>
+                    @endif
+                    {{-- <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold"></button> --}}
                 </div>
             </div>
             <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
@@ -77,7 +82,7 @@
                 @foreach ($candidates as $candidate)
                     <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="card mb-3 shadow">
-                            <img src="{{ asset('storage/'.$candidate->path) }}" width="400" height="500"
+                            <img src="{{ asset('storage/' . $candidate->path) }}" width="400" height="500"
                                 class="card-img-top img-fluid" alt="kandidat_mpm">
                             <div class="card-body text-center">
                                 <h5 class="card-title">{{ $candidate->name }}</h5>
@@ -104,7 +109,7 @@
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <img src="{{ asset('storage/'.$candidate->path) }}" width="400" height="500"
+                                    <img src="{{ asset('storage/' . $candidate->path) }}" width="400" height="500"
                                         class="card-img-top img-fluid" alt="kandidat_mpm">
                                     <ul class="list-group mt-2">
                                         <li class="list-group-item">
@@ -122,7 +127,8 @@
                                     </ul>
                                 </div>
                                 <div class="modal-footer d-flex justify-content-between">
-                                    <a href="{{ asset('storage/'.$candidate->cv) }}" target="_blank" class="btn btn-danger">Download CV</a>
+                                    <a href="{{ asset('storage/' . $candidate->cv) }}" target="_blank"
+                                        class="btn btn-danger">Download CV</a>
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 </div>
                             </div>
@@ -151,8 +157,8 @@
                                 @foreach ($candidates as $candidate)
                                     <div class="col-md-6 col-lg-4 col-xl-3 col-12">
                                         <div class="card mb-3">
-                                            <img src="{{ asset('storage/'.$candidate->path) }}" width="400" height="500"
-                                                class="card-img-top img-fluid" alt="kandidat_Presma">
+                                            <img src="{{ asset('storage/' . $candidate->path) }}" width="400"
+                                                height="500" class="card-img-top img-fluid" alt="kandidat_Presma">
                                             <div class="card-body text-center">
                                                 <h5 class="card-title">{{ $candidate->name }}</h5>
                                                 <h6 class="card-subtitle mb-2 text-muted">{{ $candidate->npm }}</h6>
@@ -179,8 +185,8 @@
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <img src="{{ asset('storage/'.$candidate->path) }}" width="400" height="500"
-                                                        class="card-img-top img-fluid" alt="kandidat_Presma">
+                                                    <img src="{{ asset('storage/' . $candidate->path) }}" width="400"
+                                                        height="500" class="card-img-top img-fluid" alt="kandidat_Presma">
                                                     <ul class="list-group mt-2">
                                                         <li class="list-group-item">
                                                             <h6>Name</h6>
@@ -198,7 +204,8 @@
                                                     </ul>
                                                 </div>
                                                 <div class="modal-footer d-flex justify-content-between">
-                                                    <a href="{{ asset('storage/'.$candidate->cv) }}" target="_blank" class="btn btn-danger">Download CV</a>
+                                                    <a href="{{ asset('storage/' . $candidate->cv) }}" target="_blank"
+                                                        class="btn btn-danger">Download CV</a>
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">Close</button>
                                                 </div>
@@ -232,8 +239,8 @@
                                 @foreach ($candidates as $candidate)
                                     <div class="col-md-6 col-lg-4 col-xl-3 col-12">
                                         <div class="card mb-3">
-                                            <img src="{{ asset('storage/'.$candidate->path) }}" width="400" height="500"
-                                                class="card-img-top img-fluid" alt="kandidat_Senat">
+                                            <img src="{{ asset('storage/' . $candidate->path) }}" width="400"
+                                                height="500" class="card-img-top img-fluid" alt="kandidat_Senat">
                                             <div class="card-body text-center">
                                                 <h5 class="card-title">{{ $candidate->name }}</h5>
                                                 <h6 class="card-subtitle mb-2 text-muted">{{ $candidate->npm }}</h6>
@@ -260,8 +267,8 @@
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <img src="{{ asset('storage/'.$candidate->path) }}" width="400" height="500"
-                                                        class="card-img-top img-fluid" alt="kandidat_Senat">
+                                                    <img src="{{ asset('storage/' . $candidate->path) }}" width="400"
+                                                        height="500" class="card-img-top img-fluid" alt="kandidat_Senat">
                                                     <ul class="list-group mt-2">
                                                         <li class="list-group-item">
                                                             <h6>Name</h6>
@@ -279,7 +286,8 @@
                                                     </ul>
                                                 </div>
                                                 <div class="modal-footer d-flex justify-content-between">
-                                                    <a href="{{ asset('storage/'.$candidate->cv) }}" target="_blank" class="btn btn-danger">Download CV</a>
+                                                    <a href="{{ asset('storage/' . $candidate->cv) }}" target="_blank"
+                                                        class="btn btn-danger">Download CV</a>
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">Close</button>
                                                 </div>
@@ -313,8 +321,8 @@
                                 @foreach ($candidates as $candidate)
                                     <div class="col-md-6 col-lg-4 col-xl-3 col-12">
                                         <div class="card mb-3">
-                                            <img src="{{ asset('storage/'.$candidate->path) }}" width="400" height="500"
-                                                class="card-img-top img-fluid" alt="kandidat_UKM">
+                                            <img src="{{ asset('storage/' . $candidate->path) }}" width="400"
+                                                height="500" class="card-img-top img-fluid" alt="kandidat_UKM">
                                             <div class="card-body text-center">
                                                 <h5 class="card-title">{{ $candidate->name }}</h5>
                                                 <h6 class="card-subtitle mb-2 text-muted">{{ $candidate->npm }}</h6>
@@ -341,8 +349,8 @@
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <img src="{{ asset('storage/'.$candidate->path) }}" width="400" height="500"
-                                                        class="card-img-top img-fluid" alt="kandidat_UKM">
+                                                    <img src="{{ asset('storage/' . $candidate->path) }}" width="400"
+                                                        height="500" class="card-img-top img-fluid" alt="kandidat_UKM">
                                                     <ul class="list-group mt-2">
                                                         <li class="list-group-item">
                                                             <h6>Name</h6>
@@ -360,7 +368,8 @@
                                                     </ul>
                                                 </div>
                                                 <div class="modal-footer d-flex justify-content-between">
-                                                    <a href="{{ asset('storage/'.$candidate->cv) }}" target="_blank" class="btn btn-danger">Download CV</a>
+                                                    <a href="{{ asset('storage/' . $candidate->cv) }}" target="_blank"
+                                                        class="btn btn-danger">Download CV</a>
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">Close</button>
                                                 </div>
@@ -387,7 +396,7 @@
                 @foreach ($committees as $committee)
                     <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="card mb-3 shadow">
-                            <img src="{{ asset('storage/'.$committee->path) }}" width="400" height="500"
+                            <img src="{{ asset('storage/' . $committee->path) }}" width="400" height="500"
                                 class="card-img-top img-fluid" alt="kandidat_UKM">
                             <div class="card-body text-center">
                                 <h5 class="card-title">{{ $committee->name }}</h5>

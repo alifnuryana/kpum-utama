@@ -1,8 +1,8 @@
 @extends('layouts.dashboard-admin')
-@section('title', 'Fakultas')
+@section('title', 'Panitia')
 @section('container')
     <div class="container pt-md-3 mt-5 pt-5">
-        <h3 class="display-6 fw-bold lh-1">Fakultas</h3>
+        <h3 class="display-6 fw-bold lh-1">Panitia</h3>
         <hr>
         @if (session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -12,23 +12,32 @@
         @endif
     </div>
     <div class="container mb-5">
-        <a href="{{ route('faculty.create') }}" class="btn btn-primary mb-3">Tambahkan Fakultas Baru</a>
+        <a href="{{ route('committee.create') }}" class="btn btn-primary mb-3">Tambahkan Panita Baru</a>
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">Nama</th>
+                        <th scope="col">NPM</th>
+                        <th scope="col">Posisi</th>
+                        <th scope="col">Program Studi</th>
+                        <th scope="col">Fakultas</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($faculties as $faculty)
+                    @foreach ($committees as $committee)
                         <tr>
-                            <th>{{ $faculty->name }}</th>
+                            <th>{{ $committee->name }}</th>
+                            <td>{{ $committee->npm }}</td>
+                            <td>{{ $committee->position }}</td>
+                            <td>{{ $committee->major->name }}</td>
+                            <td>{{ $committee->major->faculty->name }}</td>
                             <td>
                                 <div class="d-flex align-items-center gap-1">
-                                    <a href="{{ route('faculty.edit', $faculty->id) }}" class="btn btn-warning">Edit</a>
-                                    <form action="{{ route('faculty.destroy', $faculty->id) }}" method="POST">
+                                    <a href="{{ route('committee.edit', $committee->id) }}"
+                                        class="btn btn-warning">Edit</a>
+                                    <form action="{{ route('committee.destroy', $committee->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">Delete</button>

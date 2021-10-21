@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Team;
+use App\Models\Committee;
 use App\Models\Major;
-use App\Models\Candidate;
 use Illuminate\Http\Request;
 
-class MpmController extends Controller
+class CommitteeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,12 +15,10 @@ class MpmController extends Controller
      */
     public function index()
     {
-        return view('dashboard.admin.mpm.index', [
-            'active' => 'mpm',
-            'mpms' => Candidate::with(['team', 'major'])->whereHas('team', function ($q) {
-                $q->where('name', 'like', '%mpm%');
-            })->get(),
-
+        return view('dashboard.admin.committee.index', [
+            'active' => 'panitia',
+            'committees' => Committee::with(['major'])->get(),
+            'majors' => Major::get(),
         ]);
     }
 
@@ -32,10 +29,9 @@ class MpmController extends Controller
      */
     public function create()
     {
-        return view('dashboard.admin.mpm.create', [
-            'active' => 'mpm',
+        return view('dashboard.admin.committee.create', [
+            'active' => 'panitia',
             'majors' => Major::get(),
-            'teams' => Team::get(),
         ]);
     }
 
@@ -52,14 +48,11 @@ class MpmController extends Controller
             'npm' => 'required|min:10|unique:candidates,npm',
             'position' => 'required',
             'path' => 'required|image|mimes:jpg,png,jpeg,gif,svg',
-            'cv' => 'required|mimes:pdf',
             'major_id' => 'required',
-            'team_id' => 'required',
         ]);
         $attributes['path'] = $request->file('path')->store('candidate-pic');
-        $attributes['cv'] = $request->file('cv')->store('candidate-cv');
-        Candidate::create($attributes);
-        return redirect(route('mpm.index'))->with('success', 'Kandidat MPM baru telah ditambahkan.');
+        Committee::create($attributes);
+        return redirect(route('committee.index'))->with('success', 'Panitia baru telah ditambahkan.');
     }
 
     /**
@@ -81,11 +74,10 @@ class MpmController extends Controller
      */
     public function edit($id)
     {
-        return view('dashboard.admin.mpm.edit', [
-            'active' => 'mpm',
-            'teams' => Team::all(),
+        return view('dashboard.admin.committee.edit', [
+            'active' => 'panitia',
             'majors' => Major::all(),
-            'mpm' => Candidate::with('team', 'major')->findOrFail($id),
+            'committee' => Committee::with('major')->findOrFail($id),
         ]);
     }
 
@@ -103,14 +95,11 @@ class MpmController extends Controller
             'npm' => 'required|min:10',
             'position' => 'required',
             'path' => 'required|image|mimes:jpg,png,jpeg,gif,svg',
-            'cv' => 'required|mimes:pdf',
             'major_id' => 'required',
-            'team_id' => 'required',
         ]);
         $attributes['path'] = $request->file('path')->store('candidate-pic');
-        $attributes['cv'] = $request->file('cv')->store('candidate-cv');
-        Candidate::find($id)->update($attributes);
-        return redirect(route('mpm.index'))->with('success', 'Data Berhasil Di Edit');
+        Committee::find($id)->update($attributes);
+        return redirect(route('committee.index'))->with('success', 'Data Berhasil Di Edit');
     }
 
     /**
@@ -121,7 +110,7 @@ class MpmController extends Controller
      */
     public function destroy($id)
     {
-        Candidate::find($id)->delete();
-        return redirect(route('mpm.index'))->with('success', 'Data Berhasil Di Hapus');
+        Committee::find($id)->delete();
+        return redirect(route('committee.index'))->with('success', 'Data Berhasil Di Hapus');
     }
 }

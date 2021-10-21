@@ -30,7 +30,7 @@
                                 href="{{ route('dashboard.admin') }}">Home</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle @if ($active == 'timeline' || $active == 'hero' || $active == 'pengaturan')
+                            <a class="nav-link dropdown-toggle @if ($active == 'timeline' || $active == 'hero' || $active == 'pengaturan' || $active == 'panitia')
                                 active
                             @endif" href="#" id="navbarDropdownMenuLink" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -39,6 +39,7 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li><a class="dropdown-item" href="#">Hero</a></li>
                                 <li><a class="dropdown-item" href="{{ route('timeline.index') }}">Timeline</a></li>
+                                <li><a class="dropdown-item" href="{{ route('committee.index') }}">Panitia</a></li>
                                 <li><a class="dropdown-item" href="#">Pengaturan</a></li>
                             </ul>
                         </li>

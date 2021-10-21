@@ -127,7 +127,7 @@ class DashboardController extends Controller
         $candidates = Candidate::with('team', 'major')->whereHas('team', function ($q) use ($organizationID) {
             $q->where('organization_id', '=', $organizationID);
         })->orderBy('team_id', 'ASC')->get();
-        $grouped = $candidates->mapToGroups(function ($item, $key) {
+        $grouped = $candidates->mapToGroups(function ($item) {
             return [$item['team']['name'] => $item];
         });
         return view('dashboard.home', [

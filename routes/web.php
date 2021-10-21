@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CandidateController;
+use App\Http\Controllers\CommitteeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\HomeController;
@@ -70,5 +71,6 @@ Route::resource('dashboard/admin/team', TeamController::class)->middleware('admi
 Route::resource('dashboard/admin/timeline', TimelineController::class)->middleware('admin');
 Route::resource('dashboard/admin/mpm', MpmController::class)->middleware('admin');
 Route::resource('dashboard/admin/presma', PresmaController::class)->middleware('admin');
+Route::resource('dashboard/admin/committee', CommitteeController::class)->middleware('admin');
 
 

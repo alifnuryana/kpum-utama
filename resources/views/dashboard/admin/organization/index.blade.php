@@ -13,30 +13,32 @@
     </div>
     <div class="container mb-5">
         <a href="{{ route('organization.create') }}" class="btn btn-primary mb-3">Tambahkan UKM Baru</a>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">Nama</th>
-                    <th scope="col">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($organizations as $organization)
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
                     <tr>
-                        <th>{{ $organization->name }}</th>
-                        <td>
-                            <div class="d-flex align-items-center gap-1">
-                                <a href="{{ route('organization.edit', $organization->id) }}" class="btn btn-warning">Edit</a>
-                                <form action="{{ route('organization.destroy', $organization->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                </form>
-                            </div>
-                        </td>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Action</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach ($organizations as $organization)
+                        <tr>
+                            <th>{{ $organization->name }}</th>
+                            <td>
+                                <div class="d-flex align-items-center gap-1">
+                                    <a href="{{ route('organization.edit', $organization->id) }}" class="btn btn-warning">Edit</a>
+                                    <form action="{{ route('organization.destroy', $organization->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 @endsection

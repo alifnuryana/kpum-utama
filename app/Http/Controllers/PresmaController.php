@@ -101,8 +101,8 @@ class PresmaController extends Controller
             'name' => 'required|min:7',
             'npm' => 'required|min:10',
             'position' => 'required',
-            'path' => 'image|mimes:jpg,png,jpeg,gif,svg',
-            'cv' => 'mimes:pdf',
+            'path' => 'required|image|mimes:jpg,png,jpeg,gif,svg',
+            'cv' => 'required|mimes:pdf',
             'major_id' => 'required',
             'team_id' => 'required',
         ]);
