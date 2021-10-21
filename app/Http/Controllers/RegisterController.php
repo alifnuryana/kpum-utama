@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Major;
+use App\Models\Organization;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -15,6 +16,7 @@ class RegisterController extends Controller
         return view('auth.register', [
             'active' => 'register',
             'majors' => Major::with('faculty')->get(),
+            'organizations' => Organization::get(),
         ]);
     }
 

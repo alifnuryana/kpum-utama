@@ -83,11 +83,12 @@ class OrganizationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        request()->validate([
+        $attributes = $request->validate([
             'name' => ['required', 'min:3'],
+            'slug' => '',
         ]);
-
-        Organization::find($id)->update(request()->all());
+        $attributes['slug'] = strtolower(str_replace(' ', '-', $request->name));
+        Organization::find($id)->update($attributes);
         return redirect(route('organization.index'))->with('success', 'Data Berhasil Di Edit');
     }
 

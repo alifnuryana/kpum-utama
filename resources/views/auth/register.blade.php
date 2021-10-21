@@ -81,16 +81,23 @@
                         {{-- UKM --}}
                         <div class="mb-3">
                             <label for="ukm" class="form-label">UKM</label>
-                            <div class="d-flex align-items-center justify-content-start">
-                                <div class="col-6">
-                                    <div class="form-check">
-                                        <input class="form-check-input" name="ukm[]" type="checkbox" value="English Club"
-                                            id="English Club">
-                                        <label class="form-check-label" for="English Club">
-                                            English Club
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
+                            <div class="d-flex flex-wrap align-items-center justify-content-start">
+                                @foreach ($organizations as $organization)
+                                    @if ($organization->name == 'MPM' || $organization->name == 'Presma' || $organization->name == 'Senat')
+
+                                    @else
+                                        <div class="col-5">
+                                            <div class="form-check">
+                                                <input class="form-check-input" name="ukm[]" type="checkbox"
+                                                    value="{{ $organization->name }}" id="{{ $organization->name }}">
+                                                <label class="form-check-label" for="{{ $organization->name }}">
+                                                    {{ $organization->name }}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
+                                {{-- <div class="form-check">
                                         <input class="form-check-input" name="ukm[]" type="checkbox" value="Kewirausahaan"
                                             id="Kewirausahaan">
                                         <label class="form-check-label" for="Kewirausahaan">
@@ -98,20 +105,22 @@
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" name="ukm[]" type="checkbox" value="Taekwondo" id="Taekwondo">
+                                        <input class="form-check-input" name="ukm[]" type="checkbox" value="Taekwondo"
+                                            id="Taekwondo">
                                         <label class="form-check-label" for="Taekwondo">
                                             Taekwondo
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" name="ukm[]" type="checkbox" value="Resimen Mahasiswa"
-                                            id="Resimen Mahasiswa">
+                                        <input class="form-check-input" name="ukm[]" type="checkbox"
+                                            value="Resimen Mahasiswa" id="Resimen Mahasiswa">
                                         <label class="form-check-label" for="Resimen Mahasiswa">
                                             Resimen Mahasiswa
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" name="ukm[]" type="checkbox" value="Unbol" id="Unbol">
+                                        <input class="form-check-input" name="ukm[]" type="checkbox" value="Unbol"
+                                            id="Unbol">
                                         <label class="form-check-label" for="Unbol">
                                             Unbol
                                         </label>
@@ -128,7 +137,7 @@
                                         <label class="form-check-label" for="Japan Club">
                                             Japan Club
                                         </label>
-    
+
                                     </div>
                                 </div>
                                 <div class="col-6">
@@ -152,19 +161,22 @@
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" name="ukm[]" type="checkbox" value="Basket" id="Basket">
+                                        <input class="form-check-input" name="ukm[]" type="checkbox" value="Basket"
+                                            id="Basket">
                                         <label class="form-check-label" for="Basket">
                                             Basket
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" name="ukm[]" type="checkbox" value="Sentra" id="Sentra">
+                                        <input class="form-check-input" name="ukm[]" type="checkbox" value="Sentra"
+                                            id="Sentra">
                                         <label class="form-check-label" for="Sentra">
                                             Sentra
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" name="ukm[]" type="checkbox" value="An-Naafi" id="An-Naafi">
+                                        <input class="form-check-input" name="ukm[]" type="checkbox" value="An-Naafi"
+                                            id="An-Naafi">
                                         <label class="form-check-label" for="An-Naafi">
                                             An-Naafi
                                         </label>
@@ -178,9 +190,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        {{-- End UKM --}}
-                        <button class="mt-2 w-100 btn btn-lg btn-primary" type="submit">Register</button>
+                        </div> --}}
+                                {{-- End UKM --}}
+                                <button class="mt-2 w-100 btn btn-lg btn-primary" type="submit">Register</button>
                     </form>
                 </main>
             </div>
