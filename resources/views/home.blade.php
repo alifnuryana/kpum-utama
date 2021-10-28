@@ -11,10 +11,17 @@
                     system, extensive prebuilt components, and powerful JavaScript plugins.</p>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
                     @if (auth()->user())
-                        <a href="{{ route('dashboard.mpm') }}" class="btn btn-primary btn-lg px-4 me-md-2">Gunakan hak suara anda segera!</a>
+                        <a href="{{ route('dashboard.home') }}" class="btn btn-primary btn-lg px-4 me-md-2">Gunakan hak
+                            suara anda segera!</a>
                     @else
-                        <a href="{{ route('register') }}" class="btn btn-primary btn-lg px-4 me-md-2">Daftarkan segera hak
-                            suara anda!</a>
+                        @if ($config[0]->register)
+                            <a href="{{ route('register') }}" class="btn btn-primary btn-lg px-4 me-md-2">Daftarkan segera
+                                hak
+                                suara anda!</a>
+                        @else
+                            <a href="{{ route('dashboard.home') }}" class="btn btn-primary btn-lg px-4 me-md-2">Gunakan hak
+                                suara anda segera!</a>
+                        @endif
                     @endif
                     {{-- <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold"></button> --}}
                 </div>

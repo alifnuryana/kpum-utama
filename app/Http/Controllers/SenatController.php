@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Committee;
+use App\Models\Team;
 use App\Models\Major;
+use App\Models\Candidate;
 use Illuminate\Http\Request;
 
-class CommitteeController extends Controller
+class SenatController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +16,11 @@ class CommitteeController extends Controller
      */
     public function index()
     {
-        // dd(Committee::with(['major'])->get());
-        return view('dashboard.admin.committee.index', [
-            'active' => 'panitia',
-            'committees' => Committee::with(['major'])->get(),
-            'majors' => Major::get(),
+        return view('dashboard.admin.senat.index', [
+            'active' => 'senat',
+            'senats' => Candidate::with(['team', 'major'])->whereHas('team', function ($q) {
+                $q->where('name', 'like', '%senat%');
+            })->get(),
         ]);
     }
 
@@ -30,9 +31,10 @@ class CommitteeController extends Controller
      */
     public function create()
     {
-        return view('dashboard.admin.committee.create', [
-            'active' => 'panitia',
+        return view('dashboard.admin.senat.create', [
+            'active' => 'senat',
             'majors' => Major::get(),
+            'teams' => Team::get(),
         ]);
     }
 
@@ -49,11 +51,14 @@ class CommitteeController extends Controller
             'npm' => 'required|min:10|unique:candidates,npm',
             'position' => 'required',
             'path' => 'required|image|mimes:jpg,png,jpeg,gif,svg',
+            'cv' => 'required|mimes:pdf',
             'major_id' => 'required',
+            'team_id' => 'required',
         ]);
         $attributes['path'] = $request->file('path')->store('candidate-pic');
-        Committee::create($attributes);
-        return redirect(route('committee.index'))->with('success', 'Panitia baru telah ditambahkan.');
+        $attributes['cv'] = $request->file('cv')->store('candidate-cv');
+        Candidate::create($attributes);
+        return redirect(route('senat.index'))->with('success', 'Kandidat Senat baru telah ditambahkan.');
     }
 
     /**
@@ -75,10 +80,11 @@ class CommitteeController extends Controller
      */
     public function edit($id)
     {
-        return view('dashboard.admin.committee.edit', [
-            'active' => 'panitia',
+        return view('dashboard.admin.senat.edit', [
+            'active' => 'presma',
+            'teams' => Team::all(),
             'majors' => Major::all(),
-            'committee' => Committee::with('major')->findOrFail($id),
+            'senat' => Candidate::with('team', 'major')->findOrFail($id),
         ]);
     }
 
@@ -96,11 +102,14 @@ class CommitteeController extends Controller
             'npm' => 'required|min:10',
             'position' => 'required',
             'path' => 'required|image|mimes:jpg,png,jpeg,gif,svg',
+            'cv' => 'required|mimes:pdf',
             'major_id' => 'required',
+            'team_id' => 'required',
         ]);
         $attributes['path'] = $request->file('path')->store('candidate-pic');
-        Committee::find($id)->update($attributes);
-        return redirect(route('committee.index'))->with('success', 'Data Berhasil Di Edit');
+        $attributes['cv'] = $request->file('cv')->store('candidate-cv');
+        Candidate::find($id)->update($attributes);
+        return redirect(route('senat.index'))->with('success', 'Data Berhasil Di Edit');
     }
 
     /**
@@ -111,7 +120,7 @@ class CommitteeController extends Controller
      */
     public function destroy($id)
     {
-        Committee::find($id)->delete();
-        return redirect(route('committee.index'))->with('success', 'Data Berhasil Di Hapus');
+        Candidate::find($id)->delete();
+        return redirect(route('senat.index'))->with('success', 'Data Berhasil Di Hapus');
     }
 }

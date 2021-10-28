@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pengaturan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,6 +13,7 @@ class LoginController extends Controller
     {
         return view('auth.login', [
             'active' => 'login',
+            'config' => Pengaturan::get(),
         ]);
     }
 
@@ -28,7 +30,7 @@ class LoginController extends Controller
             if (auth()->user()->is_admin) {
                 return redirect()->intended(route('dashboard.admin'));
             }
-            return redirect()->intended(route('dashboard.mpm'));
+            return redirect()->intended(route('dashboard.home'));
         }
 
         return back()

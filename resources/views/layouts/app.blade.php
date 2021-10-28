@@ -64,9 +64,10 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 @if (auth()->user()->is_admin)
-                                    <li><a class="dropdown-item" href="{{ route('dashboard.admin') }}">Dashboard</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('dashboard.admin') }}">Dashboard</a>
+                                    </li>
                                 @else
-                                    <li><a class="dropdown-item" href="{{ route('dashboard.mpm') }}">Dashboard</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('dashboard.home') }}">Dashboard</a></li>
                                 @endif
                                 <li>
                                     <hr class="dropdown-divider">
@@ -86,7 +87,9 @@
                     @guest
                         <li class="nav-item">
                             <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
-                            <a href="{{ route('register') }}" class="btn btn-secondary">Register</a>
+                            @if ($config[0]->register)
+                                <a href="{{ route('register') }}" class="btn btn-secondary">Register</a>
+                            @endif
                         </li>
                     @endguest
                 </ul>

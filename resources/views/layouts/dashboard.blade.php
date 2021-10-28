@@ -24,26 +24,40 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link @if ($active == 'mpm')
+                            <a class="nav-link @if ($active == 'home')
                                 active
                             @endif"
-                                aria-current="page" href="{{ route('dashboard.mpm') }}">MPM</a>
+                                aria-current="page" href="{{ route('dashboard.home') }}">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link @if ($active == 'presma')
+                        @if ($config[0]->mpm)
+                            <li class="nav-item">
+                                <a class="nav-link @if ($active == 'mpm')
                                 active
                             @endif"
-                                href="{{ route('dashboard.presma') }}">Presma</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @if ($active == 'senat')
+                                    aria-current="page" href="{{ route('dashboard.mpm') }}">MPM</a>
+                            </li>
+                        @endif
+                        @if ($config[0]->presma)
+                            <li class="nav-item">
+                                <a class="nav-link @if ($active == 'presma')
                                 active
                             @endif"
-                                href="{{ route('dashboard.senat') }}">Senat</a>
-                        </li>
-                        <li class="nav-item">
-                            @yield('ukm')
-                        </li>
+                                    href="{{ route('dashboard.presma') }}">Presma</a>
+                            </li>
+                        @endif
+                        @if ($config[0]->senat)
+                            <li class="nav-item">
+                                <a class="nav-link @if ($active == 'senat')
+                                active
+                            @endif"
+                                    href="{{ route('dashboard.senat') }}">Senat</a>
+                            </li>
+                        @endif
+                        @if ($config[0]->ukm)
+                            <li class="nav-item" >
+                                @yield('ukm')
+                            </li>
+                        @endif
                     </ul>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item dropdown">
@@ -72,6 +86,26 @@
         </nav>
         <div>
             @yield('container')
+        </div>
+        <div class="container-fluid">
+            <footer class="py-3 my-4">
+                <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                    <li class="nav-item"><a href="{{ route('home') }}"
+                            class="nav-link px-2 text-muted">Home</a>
+                    </li>
+                    <li class="nav-item"><a href="{{ route('home.mpm') }}"
+                            class="nav-link px-2 text-muted">MPM</a>
+                    </li>
+                    <li class="nav-item"><a href="{{ route('home.presma') }}"
+                            class="nav-link px-2 text-muted">Presma</a></li>
+                    <li class="nav-item"><a href="{{ route('home.senat') }}"
+                            class="nav-link px-2 text-muted">Senat</a></li>
+                    <li class="nav-item"><a href="{{ route('home.ukm') }}"
+                            class="nav-link px-2 text-muted">UKM</a>
+                    </li>
+                </ul>
+                <p class="text-center text-muted">© 2021 KPUM Widyatama</p>
+            </footer>
         </div>
     </div>
 </body>

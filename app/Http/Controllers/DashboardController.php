@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Candidate;
 use App\Models\Organization;
+use App\Models\Pengaturan;
 use App\Models\Student;
 use App\Models\Team;
 use App\Models\Vote;
@@ -11,6 +12,20 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
+
+    public function index()
+    {
+        $dataStudent = Student::with('major')->where('npm', '=', auth()->user()->npm)->get();
+        $dataStudent = $dataStudent[0];
+
+        return view('dashboard.home', [
+            'active' => 'home',
+            'data' => 'somedata',
+            'listUKM' => $this->isHasUKM(),
+            'config' => Pengaturan::get(),
+        ]);
+    }
+
     public function mpm()
     {
         $isVoteMPM = false;
@@ -33,6 +48,7 @@ class DashboardController extends Controller
                 $q->where('name', 'like', '%mpm%');
             })->get()),
             'listUKM' => $this->isHasUKM(),
+            'config' => Pengaturan::get(),
         ]);
     }
 
@@ -61,6 +77,7 @@ class DashboardController extends Controller
             'isVotePresma' => $isVotePresma,
             'grouped' => $grouped,
             'listUKM' => $this->isHasUKM(),
+            'config' => Pengaturan::get(),
         ]);
     }
 
@@ -89,6 +106,7 @@ class DashboardController extends Controller
             'isVoteSenat' => $isVoteSenat,
             'grouped' => $grouped,
             'listUKM' => $this->isHasUKM(),
+            'config' => Pengaturan::get(),
         ]);
     }
 
@@ -138,6 +156,7 @@ class DashboardController extends Controller
             'isVoteUKM' => $isVoteUKM,
             'grouped' => $grouped,
             'listUKM' => $this->isHasUKM(),
+            'config' => Pengaturan::get(),
         ]);
     }
 }

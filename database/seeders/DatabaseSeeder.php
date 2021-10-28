@@ -9,6 +9,7 @@ use App\Models\Timeline;
 use App\Models\Candidate;
 use App\Models\Committee;
 use App\Models\Organization;
+use App\Models\Pengaturan;
 use App\Models\Student;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -36,7 +37,7 @@ class DatabaseSeeder extends Seeder
             'from' => now(),
             'to' => now(),
         ]);
-        
+
         Faculty::create([
             'name' => 'Fakultas Ekonomi & Bisnis',
             'slug' => 'fakultas-ekonomi-dan-bisnis',
@@ -151,7 +152,7 @@ class DatabaseSeeder extends Seeder
             'slug' => 'produksi-film-dan-televisi',
             'faculty_id' => 5,
         ]);
-        
+
         Organization::create([
             'name' => 'MPM',
             'slug' => 'mpm',
@@ -237,39 +238,9 @@ class DatabaseSeeder extends Seeder
             'slug' => 'tarung-drajat',
         ]);
 
-        // Team::create([
-        //     'name' => 'Paslon MPM 1',
-        //     'organization_id' => 1
-        // ]);
-
-        // Team::create([
-        //     'name' => 'Paslon MPM 2',
-        //     'organization_id' => 1
-        // ]);
-
-        // Team::create([
-        //     'name' => 'Paslon Presma 1',
-        //     'organization_id' => 2
-        // ]);
-
-        // Team::create([
-        //     'name' => 'Paslon Presma 2',
-        //     'organization_id' => 2
-        // ]);
-
-        // Team::create([
-        //     'name' => 'Paslon Senat FT',
-        //     'organization_id' => 3,
-        // ]);
-
-        // Team::create([
-        //     'name' => 'Paslon Senat FB',
-        //     'organization_id' => 3,
-        // ]);
-
-        Team::factory(10)->create();
-        Candidate::factory(20)->create();
-        Committee::factory(10)->create();
+        // Team::factory(10)->create();
+        // Candidate::factory(20)->create();
+        // Committee::factory(10)->create();
         Student::create([
             'name' => 'Alif Nuryana',
             'npm' => '0620101052',
@@ -289,5 +260,8 @@ class DatabaseSeeder extends Seeder
             'is_admin' => false,
             'major_id' => 1,
         ]);
+
+        Pengaturan::create([]);
+
     }
 }

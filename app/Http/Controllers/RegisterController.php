@@ -3,9 +3,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\SendMail;
 use App\Models\Major;
+use App\Mail\SendMail;
 use App\Models\Student;
+use App\Models\Pengaturan;
 use Illuminate\Support\Str;
 use App\Models\Organization;
 use Illuminate\Http\Request;
@@ -20,6 +21,7 @@ class RegisterController extends Controller
             'active' => 'register',
             'majors' => Major::with('faculty')->get(),
             'organizations' => Organization::get(),
+            'config' => Pengaturan::get(),
         ]);
     }
 

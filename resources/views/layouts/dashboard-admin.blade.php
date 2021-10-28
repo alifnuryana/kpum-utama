@@ -32,15 +32,16 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle @if ($active == 'timeline' || $active == 'hero' || $active == 'pengaturan' || $active == 'panitia')
                                 active
-                            @endif" href="#" id="navbarDropdownMenuLink" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                            @endif"
+                                href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                                 Sistem Pemilu
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">Hero</a></li>
                                 <li><a class="dropdown-item" href="{{ route('timeline.index') }}">Timeline</a></li>
                                 <li><a class="dropdown-item" href="{{ route('committee.index') }}">Panitia</a></li>
-                                <li><a class="dropdown-item" href="#">Pengaturan</a></li>
+                                <li><a class="dropdown-item" href="{{ route('pengaturan.index') }}">Pengaturan</a>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -50,17 +51,18 @@
                                 href="{{ route('team.index') }}">Pasangan Calon</a>
                         </li>
                         <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle @if ($active == 'mpm' || $active == 'presma' || $active == 'senat' || $active == 'ukm' )
+                            <a class="nav-link dropdown-toggle @if ($active == 'mpm' || $active == 'presma' || $active == 'senat' || $active == 'organization')
                                 active
-                            @endif" href="#" id="navbarDropdownMenuLink" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                            @endif"
+                                href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                                 Kandidat
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li><a class="dropdown-item" href="{{ route('mpm.index') }}">MPM</a></li>
                                 <li><a class="dropdown-item" href="{{ route('presma.index') }}">Presma</a></li>
-                                <li><a class="dropdown-item" href="#">Senat</a></li>
-                                <li><a class="dropdown-item" href="#">UKM</a></li>
+                                <li><a class="dropdown-item" href="{{ route('senat.index') }}">Senat</a></li>
+                                <li><a class="dropdown-item" href="{{ route('ukm.index') }}">UKM</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -107,6 +109,7 @@
                                 </li>
                             </ul>
                         </li>
+                    </ul>
                 </div>
             </div>
         </nav>

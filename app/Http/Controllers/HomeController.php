@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Timeline;
 use App\Models\Candidate;
 use App\Models\Committee;
+use App\Models\Pengaturan;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,6 +15,7 @@ class HomeController extends Controller
         return view('home', [
             'active' => 'home',
             'timelines' => Timeline::all(),
+            'config' => Pengaturan::get(),
         ]);
     }
 
@@ -24,6 +26,7 @@ class HomeController extends Controller
             'candidates' => collect(Candidate::with('team', 'major')->whereHas('team', function ($q) {
                 $q->where('name', 'like', '%mpm%');
             })->get()),
+            'config' => Pengaturan::get(),
         ]);
     }
 
@@ -39,6 +42,7 @@ class HomeController extends Controller
         return view('home', [
             'active' => 'presma',
             'grouped' => $grouped,
+            'config' => Pengaturan::get(),
         ]);
     }
 
@@ -55,6 +59,7 @@ class HomeController extends Controller
         return view('home', [
             'active' => 'senat',
             'grouped' => $grouped,
+            'config' => Pengaturan::get(),
         ]);
     }
 
@@ -71,6 +76,7 @@ class HomeController extends Controller
         return view('home', [
             'active' => 'ukm',
             'grouped' => $grouped,
+            'config' => Pengaturan::get(),
         ]);
     }
 
@@ -79,6 +85,7 @@ class HomeController extends Controller
         return view('home', [
             'active' => 'panitia',
             'committees' => collect(Committee::with(['major'])->get()),
+            'config' => Pengaturan::get(),
         ]);
     }
 

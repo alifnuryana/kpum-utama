@@ -26,7 +26,7 @@ class CommitteeFactory extends Factory
             'npm' => $this->faker->randomNumber(5, true),
             'position' => $this->faker->jobTitle(),
             'path' => '',
-            'major_id' => rand(1, 16),
+            'major_id' => rand(1, 15),
         ];
     }
 }
