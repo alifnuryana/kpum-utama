@@ -20,7 +20,7 @@ class LoginController extends Controller
         $credentials = $request->validate([
             'email' => 'required|email|ends_with
             :@widyatama.ac.id',
-            'password' => ['required', 'min:7'],
+            'password' => ['required'],
         ]);
 
         if (Auth::attempt($credentials)) {

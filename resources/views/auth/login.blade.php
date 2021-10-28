@@ -6,7 +6,7 @@
             <div class="col-lg-6 col-xl-5">
                 @if (Session::has('success'))
                     <div class="alert alert-success alert-dismissible fade show mt-5" role="alert">
-                        <strong>Berhasil!</strong> Silahkan Login.
+                        <strong>Berhasil!</strong> Password sudah dikirimkan silahkan cek email anda.
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif

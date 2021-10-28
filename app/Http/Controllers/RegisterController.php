@@ -3,11 +3,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendMail;
 use App\Models\Major;
-use App\Models\Organization;
 use App\Models\Student;
+use Illuminate\Support\Str;
+use App\Models\Organization;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
 {
@@ -29,10 +32,15 @@ class RegisterController extends Controller
             'major_id' => 'required',
             'email' => 'required|email|unique:students,email|ends_with
             :@widyatama.ac.id',
-            'password' => 'required|min:8',
         ]);
-        $attributes['password'] = Hash::make($attributes['password']);
+        $password = Str::random(5);
+        $attributes['password'] = Hash::make($password);
         $attributes['ukm'] = collect(request()->ukm)->implode('_');
+        $maildata = [
+            'title' => "Komisi Pemilihan Umum Mahasiswa",
+            'password' => $password,
+        ];
+        Mail::to($attributes['email'])->send(new SendMail($maildata));
         Student::create($attributes);
         return redirect(route('login'))->with('success', 'berhasil.');
     }
