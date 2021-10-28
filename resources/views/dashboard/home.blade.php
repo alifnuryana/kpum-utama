@@ -2192,7 +2192,19 @@
                     </div>
                 </form>
             </div>
-        @else
+            @elseif($grouped->isEmpty())
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 bg-primary text-white text-center shadow p-2 mt-4">
+                        <h1 class="display-5 mb-0">Kandidat {{ $name }}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="container mt-4 text-center">
+                <h4 class="display-7 mt-2">Tidak Ada Calon Kandidat</h4>
+            </div>
+            @else
             <div class="container">
                 <div class="row">
                     <div class="col-12 bg-primary text-white text-center shadow p-2 mt-4">
