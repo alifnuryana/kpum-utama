@@ -7,7 +7,7 @@
             active
         @endif"
                 href="
-                            #" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                #" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 UKM
             </a>
             <ul class="dropdown-menu dropdown-menu-end " aria-labelledby="navbarDropdown">
@@ -15,7 +15,7 @@
                     <li><a class="dropdown-item @if ($active != 'mpm' && $active != 'senat' && $active != 'presma')
                         active
                     @endif""
-                                                    href="
+                                                        href="
                             {{ route('dashboard.ukm', strtolower(str_replace(' ', '-', $UKM))) }}">{{ $UKM }}</a>
                     </li>
                 @endforeach
@@ -99,11 +99,11 @@
                     </form>
                 </div>
             </div>
-        @elseif($grouped->isEmpty())
+        @elseif($candidates->isEmpty())
             <div class="container">
                 <div class="row">
                     <div class="col-12 bg-primary text-white text-center shadow p-2 mt-4">
-                        <h1 class="display-5 mb-0">Kandidat Senat</h1>
+                        <h1 class="display-5 mb-0">Kandidat MPM</h1>
                     </div>
                 </div>
             </div>
