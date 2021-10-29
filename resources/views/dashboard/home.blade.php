@@ -5,8 +5,9 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle @if ($active != 'mpm' && $active != 'senat' && $active != 'presma')
             active
-        @endif"" href="
-                #" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        @endif"
+                href="
+                            #" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 UKM
             </a>
             <ul class="dropdown-menu dropdown-menu-end " aria-labelledby="navbarDropdown">
@@ -14,7 +15,7 @@
                     <li><a class="dropdown-item @if ($active != 'mpm' && $active != 'senat' && $active != 'presma')
                         active
                     @endif""
-                                        href="
+                                                    href="
                             {{ route('dashboard.ukm', strtolower(str_replace(' ', '-', $UKM))) }}">{{ $UKM }}</a>
                     </li>
                 @endforeach
@@ -29,18 +30,20 @@
                 <div class="col-md-9 col-lg-8 col-xl-7">
                     <div class="card">
                         <div class="card-body shadow">
-                            <p class="mb-0">Selamat Datang <strong>Alif Nuryana</strong></p>
+                            <p class="mb-0">Selamat Datang <strong>{{ $data->name }}</strong></p>
                             <hr>
                             <ul class="list-group text-center">
-                                <li class="list-group-item">Alif Nuryana</li>
-                                <li class="list-group-item">0620101052</li>
-                                <li class="list-group-item">Teknik Informatika</li>
-                                <li class="list-group-item">Fakultas Teknik</li>
-                                <li class="list-group-item">
-                                    @foreach ($listUKM as $ukm)
-                                        <span class="badge rounded-pill bg-primary">{{ $ukm }}</span>
-                                    @endforeach
-                                </li>
+                                <li class="list-group-item">{{ $data->name }}</li>
+                                <li class="list-group-item">{{ $data->npm }}</li>
+                                <li class="list-group-item">{{ $data->major->name }}</li>
+                                <li class="list-group-item">{{ $data->major->faculty->name }}</li>
+                                @if (count($listUKM) > 0)
+                                    <li class="list-group-item">
+                                        @foreach ($listUKM as $ukm)
+                                            <span class="badge rounded-pill bg-primary">{{ $ukm }}</span>
+                                        @endforeach
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                     </div>

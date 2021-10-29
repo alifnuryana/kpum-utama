@@ -17,10 +17,9 @@ class DashboardController extends Controller
     {
         $dataStudent = Student::with('major')->where('npm', '=', auth()->user()->npm)->get();
         $dataStudent = $dataStudent[0];
-
         return view('dashboard.home', [
             'active' => 'home',
-            'data' => 'somedata',
+            'data' => $dataStudent,
             'listUKM' => $this->isHasUKM(),
             'config' => Pengaturan::get(),
         ]);
@@ -117,13 +116,6 @@ class DashboardController extends Controller
         if ($student[0]->ukm == '') {
             $listUKM = [];
         }
-        // foreach ($listUKM as $key => $UKM) {
-        //     $listUKM[$key] = [
-        //         'name' => $listUKM[$key],
-        //         'active' => strtolower(str_replace(" ", "", $UKM)),
-        //     ];
-        // }
-        // dd($listUKM);
         return $listUKM;
     }
 
