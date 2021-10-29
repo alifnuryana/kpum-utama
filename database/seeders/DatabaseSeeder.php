@@ -241,23 +241,14 @@ class DatabaseSeeder extends Seeder
         // Team::factory(10)->create();
         // Candidate::factory(20)->create();
         // Committee::factory(10)->create();
-        Student::create([
-            'name' => 'Alif Nuryana',
-            'npm' => '0620101052',
-            'email' => 'nuryana.alif@widyatama.ac.id',
-            'ukm' => 'Unbol',
-            'password' => Hash::make('Bricard2708_'),
-            'is_admin' => true,
-            'major_id' => 1,
-        ]);
 
         Student::create([
             'name' => 'admin',
-            'npm' => '0620101050',
-            'ukm' => 'Unbol',
+            'npm' => '0123456789',
+            'ukm' => '',
             'email' => 'admin@widyatama.ac.id',
             'password' => Hash::make('adminkpum2021'),
-            'is_admin' => false,
+            'is_admin' => true,
             'major_id' => 1,
         ]);
 
