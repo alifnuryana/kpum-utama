@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CandidateController;
+use App\Http\Controllers\ChartController;
 use App\Http\Controllers\CommitteeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FacultyController;
@@ -62,11 +64,7 @@ Route::post('dashboard/senat', [VoteController::class, 'senat'])->name('vote.sen
 Route::post('dashboard/ukm/{ukmName}', [VoteController::class, 'ukm'])->name('vote.ukm')->middleware(['auth', 'checkUKM']);
 
 // Administrator
-Route::get('dashboard/admin', function () {
-  return view('dashboard.admin.home', [
-    'active' => 'home',
-  ]);
-})->name('dashboard.admin')->middleware('admin');
+Route::get('dashboard/admin', [AdminController::class, 'index'])->name('dashboard.admin')->middleware('admin');
 
 // Crud Dashboard Admin
 Route::resource('dashboard/admin/major', MajorController::class)->middleware('admin');
@@ -80,5 +78,4 @@ Route::resource('dashboard/admin/committee', CommitteeController::class)->middle
 Route::resource('dashboard/admin/senat', SenatController::class)->middleware('admin');
 Route::resource('dashboard/admin/ukm', UkmController::class)->middleware('admin');
 Route::resource('dashboard/admin/pengaturan', PengaturanController::class)->middleware('admin');
-
 
