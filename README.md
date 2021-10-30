@@ -78,3 +78,8 @@ Melakukan migrasi dan seed terhadap database baru
 ```bash
 php artisan migrate:fresh --seed
 ```
+
+Jalankan aplikasi
+```bash
+php artisan serve
+```
