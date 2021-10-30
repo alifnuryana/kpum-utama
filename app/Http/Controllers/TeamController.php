@@ -43,7 +43,7 @@ class TeamController extends Controller
     public function store(Request $request)
     {
         $attributes = request()->validate([
-            'name' => 'required|min:7',
+            'name' => 'required',
             'organization_id' => 'required',
         ]);
         // $attributes['slug'] = strtolower(str_replace(' ', '-', request()->name));

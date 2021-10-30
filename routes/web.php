@@ -65,6 +65,8 @@ Route::post('dashboard/ukm/{ukmName}', [VoteController::class, 'ukm'])->name('vo
 
 // Administrator
 Route::get('dashboard/admin', [AdminController::class, 'index'])->name('dashboard.admin')->middleware('admin');
+Route::get('dashboard/hasil/', [AdminController::class, 'hasilAll'])->name('dashboard.admin.hasilAll')->middleware('admin');
+Route::get('dashboard/hasil/{slug}', [AdminController::class, 'hasil'])->name('dashboard.admin.hasil')->middleware('admin');
 
 // Crud Dashboard Admin
 Route::resource('dashboard/admin/major', MajorController::class)->middleware('admin');

@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <script src="{{ asset('js/app.js') }}"></script>
-    <script type="text/javascript" src="{{asset('assets/js/echarts.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <title>@yield('title') | KPUM</title>
 </head>
 
@@ -29,6 +29,12 @@
                                 active
                             @endif"
                                 href="{{ route('dashboard.admin') }}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @if ($active == 'quickcount')
+                                active
+                            @endif"
+                                href="{{ route('dashboard.admin.hasilAll') }}">Hasil Sementara</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle @if ($active == 'timeline' || $active == 'hero' || $active == 'pengaturan' || $active == 'panitia')

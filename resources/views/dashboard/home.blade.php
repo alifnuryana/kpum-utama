@@ -72,7 +72,7 @@
                             @foreach ($candidates as $candidate)
                                 <div class="col-md-6 col-lg-4 col-xl-3">
                                     <div class="card mb-3 shadow">
-                                        <img src="https://source.unsplash.com/400x500" width="400" height="500"
+                                        <img src="{{ asset('storage/' . $candidate->path) }}" width="400" height="500"
                                             class="card-img-top img-fluid" alt="kandidat_mpm">
                                         <div class="card-body text-center">
                                             <h5 class="card-title">{{ $candidate->name }}</h5>
@@ -127,7 +127,7 @@
                             @foreach ($candidates as $candidate)
                                 <div class="col-md-6 col-lg-4 col-xl-3">
                                     <div class="card mb-3 shadow">
-                                        <img src="https://source.unsplash.com/400x500" width="400" height="500"
+                                        <img src="{{ asset('storage/' . $candidate->path) }}" width="400" height="500"
                                             class="card-img-top img-fluid" alt="kandidat_mpm">
                                         <div class="card-body text-center">
                                             <h5 class="card-title">{{ $candidate->name }}</h5>
@@ -176,7 +176,7 @@
                                             @foreach ($candidates as $candidate)
                                                 <div class="col-12 col-md-5 col-lg-5 col-xl-5">
                                                     <div class="card mb-3">
-                                                        <img src="https://source.unsplash.com/400x500" width="400"
+                                                        <img src="{{ asset('storage/' . $candidate->path) }}" width="400"
                                                             height="500" class="card-img-top img-fluid"
                                                             alt="kandidat_Presma">
                                                         <div class="card-body text-center">
@@ -246,7 +246,7 @@
                                             @foreach ($candidates as $candidate)
                                                 <div class="col-12 col-md-5 col-lg-5 col-xl-5">
                                                     <div class="card mb-3">
-                                                        <img src="https://source.unsplash.com/400x500" width="400"
+                                                        <img src="{{ asset('storage/' . $candidate->path) }}" width="400"
                                                             height="500" class="card-img-top img-fluid"
                                                             alt="kandidat_Presma">
                                                         <div class="card-body text-center">
@@ -306,7 +306,7 @@
                                             @foreach ($candidates as $candidate)
                                                 <div class="col-12 col-md-5 col-lg-5 col-xl-5">
                                                     <div class="card mb-3">
-                                                        <img src="https://source.unsplash.com/400x500" width="400"
+                                                        <img src="{{ asset('storage/' . $candidate->path) }}" width="400"
                                                             height="500" class="card-img-top img-fluid"
                                                             alt="kandidat_Presma">
                                                         <div class="card-body text-center">
@@ -376,7 +376,7 @@
                                             @foreach ($candidates as $candidate)
                                                 <div class="col-12 col-md-5 col-lg-5 col-xl-5">
                                                     <div class="card mb-3">
-                                                        <img src="https://source.unsplash.com/400x500" width="400"
+                                                        <img src="{{ asset('storage/' . $candidate->path) }}" width="400"
                                                             height="500" class="card-img-top img-fluid"
                                                             alt="kandidat_Presma">
                                                         <div class="card-body text-center">
@@ -436,7 +436,7 @@
                                             @foreach ($candidates as $candidate)
                                                 <div class="col-12 col-md-5 col-lg-5 col-xl-5">
                                                     <div class="card mb-3">
-                                                        <img src="https://source.unsplash.com/400x500" width="400"
+                                                        <img src="{{ asset('storage/' . $candidate->path) }}" width="400"
                                                             height="500" class="card-img-top img-fluid"
                                                             alt="kandidat_Presma">
                                                         <div class="card-body text-center">
@@ -506,7 +506,7 @@
                                             @foreach ($candidates as $candidate)
                                                 <div class="col-12 col-md-5 col-lg-5 col-xl-5">
                                                     <div class="card mb-3">
-                                                        <img src="https://source.unsplash.com/400x500" width="400"
+                                                        <img src="{{ asset('storage/' . $candidate->path) }}" width="400"
                                                             height="500" class="card-img-top img-fluid"
                                                             alt="kandidat_Presma">
                                                         <div class="card-body text-center">
