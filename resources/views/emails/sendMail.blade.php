@@ -1,4 +1,5 @@
 @component('mail::message')
+<img src="{{ asset('img/logo.png') }}" alt="logo_kpum">
 # KPUM UTAMA
 
 Hak suara anda telah terdaftar, silahkan login. <br>

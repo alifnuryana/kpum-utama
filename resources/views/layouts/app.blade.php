@@ -51,9 +51,6 @@
                         @endif"
                             href="{{ route('home.panitia') }}">Panitia</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Hasil Sementara</a>
-                    </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     @auth

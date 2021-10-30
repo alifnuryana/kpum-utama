@@ -25,7 +25,7 @@ class AdminController extends Controller
     public function cekSuara($organizationID)
     {
         $dataOrganization = Organization::where('id', '=', $organizationID)->get()->first();
-        if ($dataOrganization->name == 'MPM' || $dataOrganization->name == 'Presma' || $dataOrganization->name == 'Senat') {
+        if ($dataOrganization->name == 'MPM' || $dataOrganization->name == 'Senat' || $dataOrganization->name == 'Presma') {
             $studentCount = count(Student::with(['major'])->get());
             $studentVotesCount = count(Vote::with(['team', 'student'])->whereHas('team', function ($q) use ($organizationID) {
                 $q->where('organization_id', '=', $organizationID);
@@ -36,7 +36,7 @@ class AdminController extends Controller
             }
             return $result;
         } else {
-            $studentCount = count(Student::where('ukm', 'like', '%'.$dataOrganization->name.'%')->get());
+            $studentCount = count(Student::where('ukm', 'like', '%' . $dataOrganization->name . '%')->get());
             $studentVotesCount = count(Vote::with(['team', 'student'])->whereHas('team', function ($q) use ($organizationID) {
                 $q->where('organization_id', '=', $organizationID);
             })->get());
