@@ -38,8 +38,7 @@ Membuat database baru
 CREATE DATABASE kpum2021
 ```
 
-Menyesuaikan .env yang dibutuhkan
-DB
+Menyesuaikan .env untuk kebutuhan Database
 ```bash
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
@@ -49,7 +48,7 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-Email
+Menyesuaikan .env untuk kebutuhan Email
 ```bash
 MAIL_MAILER=smtp
 MAIL_HOST=mailhog
