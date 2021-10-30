@@ -38,6 +38,15 @@ Membuat database baru
 CREATE DATABASE kpum2021
 ```
 
+Membuat .env untuk kebutuhan Aplikasi
+```bash
+APP_NAME=KPUMUTAMA
+APP_ENV=local
+APP_KEY=
+APP_DEBUG=true
+APP_URL=http://localhost
+```
+
 Menyesuaikan .env untuk kebutuhan Database
 ```bash
 DB_CONNECTION=mysql
