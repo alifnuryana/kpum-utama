@@ -2,12 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Team;
 use App\Models\Major;
 use App\Models\Faculty;
 use App\Models\Timeline;
-use App\Models\Candidate;
-use App\Models\Committee;
 use App\Models\Organization;
 use App\Models\Pengaturan;
 use App\Models\Student;
@@ -238,12 +235,8 @@ class DatabaseSeeder extends Seeder
             'slug' => 'tarung-drajat',
         ]);
 
-        // Team::factory(10)->create();
-        // Candidate::factory(20)->create();
-        // Committee::factory(10)->create();
-
         Student::create([
-            'name' => 'admin',
+            'name' => 'Admin',
             'npm' => '0123456789',
             'ukm' => '',
             'email' => 'admin@widyatama.ac.id',
