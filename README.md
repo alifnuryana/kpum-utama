@@ -69,6 +69,16 @@ MAIL_FROM_ADDRESS=null
 MAIL_FROM_NAME="${APP_NAME}"
 ```
 
+Menyesuaikan .env untuk kebutuhan asset
+```bash
+FILESYSTEM_DRIVER=public
+```
+
+Hubungkan folder storage dengan public untuk kebutuhan asset
+```bash
+php artisan storage:link
+```
+
 Generate App Encryption Key
 ```bash
 php artisan key:generate
